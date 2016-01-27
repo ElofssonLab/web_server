@@ -1,0 +1,75 @@
+{% extends "pred/base_layout.html" %}
+
+{%block content_right_panel %}
+    {% if username %}
+      {% include "pred/user_header.html" %}
+    {% endif %}
+  <h2>Download</h2>
+  <br><br>
+  <table cellspacing=0 cellpadding=0 border=0>
+  {% comment %}
+    <tr>
+      <td>
+      <h3>1. TOPCONS2.0 dataset</h3>
+        <p style="margin-left:15px;">
+        Zip file for the TOPCONS2.0 dataset: <a
+            href="{{STATIC_URL}}download/TOPCONS2.0_datasets.zip">TOPCONS2.0_datasets.zip</a>
+        <br><br>
+        <i>Format:</i><br>
+        <pre>
+  Each target contains three lines
+  line 1: Sequence description
+  line 2: Amino acid sequence in one letter code
+  line 3: Topology and signal peptide of the protein in one letter code
+          S - Signel peptide
+          I - Inside of the membrane
+          O - Outside of the membrane
+          M - Transmembrane region
+        </pre>
+        <p>
+      </td>
+    </tr>
+  {% endcomment %}
+
+    <tr>
+        <td>
+            <h3>1. Software of BOCTOPUS2 on the github:</h3>
+            <p style="margin-left:15px;">
+            <a href="https://bitbucket.org/sikander_hayat/boctopus2_newdataset">https://bitbucket.org/sikander_hayat/boctopus2_newdataset</a>
+            <br><br>
+            </p>
+        </td>
+    </tr>
+    {%if zipfile_wholepackage %}
+        <tr>
+            <td>
+                <h3>2. The whole package of BOCTOPUS2 in one zip file. </h3>
+                <p style="margin-left:15px;">
+                <a href="{{STATIC_URL}}download/{{zipfile_wholepackage}}">{{zipfile_wholepackage}} </a>({{size_wholepackage}})<br><br>
+                    <a href="{{STATIC_URL}}download/README_boctopus2.txt">README for the BOCTOPUS2 package</a>
+                    <br><br>
+                </p>
+            </td>
+        </tr>
+    {%endif%}
+        <tr>
+            <td>
+                <h3>Supplementary information of the paper</h3>
+                <p style="margin-left:15px;">
+                <ul>
+                    <li>boctopus2 dataset (42 proteins): <a href="{{STATIC_URL}}download/boctopus2_crossvalidation_dataset.xlsx">boctopus2_crossvalidation_dataset.xlsx  </a></li><br> 
+                <li>Sequences and their annotation used for training/testing boctopus2
+                : <a href="{{STATIC_URL}}download/boctopus2_dataset_sequenceannotation.txt">boctopus2_dataset_sequenceannotation.txt</a></li><br>
+                <li>Cross-validated boctopus2 performance (protein wise results for topology prediction): <a href="{{STATIC_URL}}download/boctopus2_filter0.3_proteinwise_crossvalidated_results.xlsx">boctopus2_filter0.3_proteinwise_crossvalidated_results.xlsx</a></li><br>
+                <li>Cross-validated boctopus2 performance at different thresholds (protein wise results for topology prediction): <a href="{{STATIC_URL}}download/proteinwise_prediction_results_at_different_filter.xlsx">proteinwise_prediction_results_at_different_filter.xlsx</a></li><br>
+                <li><a href="{{STATIC_URL}}download/boctopus2_predictedtopologies.zip">boctopus2_predictedtopologies.zip</a></li><br>
+                <li><a href="{{STATIC_URL}}download/predictedtopologies_othermethods.zip">predictedtopologies_othermethods.zip</a></li><br>
+                <li><a href="{{STATIC_URL}}download/predictedtopologies_comparison.zip">predictedtopologies_comparison.zip</a></li><br>
+                </ul>
+                <br><br>
+                </p>
+            </td>
+        </tr>
+  </table>
+{% endblock %}
+

@@ -1,0 +1,148 @@
+{% extends "pred/base_layout.html" %}
+
+{%block content_right_panel %}
+    {% if username %}
+      {% include "pred/user_header.html" %}
+    {% endif %}
+  <h2>Help</h2>
+  <table cellspacing=0 cellpadding=0 border=0>
+    <tr>
+      <td class="Greylink"><a href="#1">1.&nbsp;Summary<img src="{{STATIC_URL}}/images/0.gif" height=1 width=5 border=0><img src="{{STATIC_URL}}/images/arrow.png" border=0><img src="{{STATIC_URL}}/images/0.gif" height=1 width=40 border=0></a><td>
+      <td class="Greylink"><a href="#2">2.&nbsp;Usage<img src="{{STATIC_URL}}/images/0.gif" height=1 width=5 border=0><img src="{{STATIC_URL}}/images/arrow.png" border=0><img src="{{STATIC_URL}}/images/0.gif" height=1 width=40 border=0></a><td>
+      <td class="Greylink"><a href="#3">3.&nbsp;Output<img src="{{STATIC_URL}}/images/0.gif" height=1 width=5 border=0><img src="{{STATIC_URL}}/images/arrow.png" border=0><img src="{{STATIC_URL}}/images/0.gif" height=1 width=40 border=0></a><td>
+      <td class="Greylink"><a href="#4">4.&nbsp;References<img src="{{STATIC_URL}}/images/0.gif" height=1 width=5 border=0><img src="{{STATIC_URL}}/images/arrow.png" border=0><img src="{{STATIC_URL}}/images/0.gif" height=1 width=40 border=0></a><td>
+      <td class="Greylink"><a href="#5">5.&nbsp;Contact<img src="{{STATIC_URL}}/images/0.gif" height=1 width=5 border=0><img src="{{STATIC_URL}}/images/arrow.png" border=0><img src="{{STATIC_URL}}/images/0.gif" height=1 width=40 border=0></a><td>
+      </tr>
+  </table>
+
+  <table>
+    <tr>
+      <td valign="top" colspan="2">
+      <br><br>
+      <a name="1"></a>
+      <h3>1. Summary</h3><br>
+      <table cellspacing=0 cellpadding=0 border=0>
+        <tr>
+          <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=400></td>
+          <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=50></td>
+        </tr>
+        <tr><td>
+            <p>BOCTOPUS2 is a significantly improved topology prediction
+            method for putative transmembrane beta-barrel proteins.
+            BOCTOPUS2 outputs the location and number of the transmembrane
+            beta-strands, the orientation (i.e. facing lipids or facing the
+            barrel pore) of residues predicted in transmembrane
+            beta-strands. BOCTOPUS2 is trained on full Uniprot sequences
+            and can be used to delineate the putative transmembrane barrel
+            region in the full input sequence. This is a major novelty of
+            BOCTOPUS2. Most of the earlier methods are trained on PDB
+            sequences that exclude non-barrel regions making those methods
+            less suitable for large-scale predictions from full sequences. 
+            </p>
+
+            <p>
+            BOCTOPUS2 is trained on a set of 42 full-length Uniprot sequences of
+            transmembrane beta-barrels with a known 3D structure. It is a two-stage method,
+            in the first stage 4 separate SVMs are used to predict the per-residue location
+            (inner-loop, outer-loop, membrane lipid-facing, membrane pore-facing). A filter
+            is then used to determine the putative beta-barrel region and in the second
+            stage a hidden Markov model (HMM) is used to predict the overall topology. In
+            contrast to BOCTOPUS, BOCTOPUS2 has a simplified HMM-architecture and requires
+            no tuning of transition and emission probabilities, thus making it independent
+            of the data set.
+            </p>
+        </td> </tr>
+      </table>
+
+      <br><br>
+
+      <a name="2"></a>
+      <h3>2. Usage</h3><br>
+      <table cellspacing=0 cellpadding=0 border=0>
+        <tr>
+          <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=400></td>
+          <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=50></td>
+        </tr>
+        <tr><td>
+            <p>
+            Input to the server is one or several (upto five) amino acid sequence(s) in <a
+              href='http://blast.ncbi.nlm.nih.gov/blastcgihelp.shtml'
+              target=\'_blank\'>FASTA</a> format. The user can either paste
+            sequences in the text-area provided, or, alternatively,
+            upload a file containing your sequences.
+            </p>
+            <i>Example input:</i> <br>
+            <span style="font-family: courier">
+                &gt;1qj8A<br>
+                ATSTVTGGYAQSDAQGQMNKMGGFNLKYRYEEDNSPLGVIGSFTYTEKSRTASSGDYNKN<br>
+                QYYGITAGPAYRINDWASIYGVVGVGYGKFQTTEYPTYKNDTSDYGFSYGAGLQFNPMEN<br>
+                VALDFSYEQSRIRSVDVGTWIAGVGYRF<br>
+
+            </span>
+            <br>
+      </td></tr>
+    </table>
+
+    <br><br>
+
+      <a name="3"></a>
+      <h3>3. Output</h3><br>
+      <table cellspacing=0 cellpadding=0 border=0>
+        <tr>
+          <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=400></td>
+          <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=50></td></tr>
+        <tr><td>
+                <p>
+                The server outputs the topology predictions using BOCTOPUS2
+                method in plain text format. The predicted topology is also
+                displayed graphically. Additionally, a zip folder with the
+                input sequence, output topology (plain text and graphical
+                representation), the position specific scoring matrix (PSSM)
+                generated and the multiple sequence alignment used to generate
+                the PSSM is also downloadable.
+                </p>
+      </td></tr>
+    </table>
+    <br><br>
+
+    <a name="4"></a>
+
+    <h3>4. References</h3><br>
+    <table cellspacing=0 cellpadding=5 border=0>
+      <tr><td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=400></td>
+        <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=50></td>
+  </table>
+
+  <br><br>
+  <a name="5"></a>
+
+    <h3>5. Contact</h3><br
+    <table cellspacing=0 cellpadding=0 border=0>
+      <tr>
+        <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=400></td>
+        <td><img src="{{STATIC_URL}}/images/0.gif" border=0 height=1 width=50></td>
+      </tr>
+      <tr><td>
+          <b>Arne Elofsson group</b><br><br>
+          <!--<a href="http://www.cbr.su.se/">Center for Biomembrane Research</a><br><br>-->
+          <a href="http://www.dbb.su.se/">Department for Biochemistry and Biophysics</a><br>
+          The Arrhenius Laboratories for Natural Sciences<br>
+          <a href="http://www.su.se/">Stockholm University</a><br>
+          SE-106 91 Stockholm, Sweden<br><br>
+
+          <a href="http://www.scilifelab.se">Science for Life Laboratory</a><br>
+            Box 1031, 17121 Solna, Sweden
+            <br><br>
+          <table cellspacing=0 cellpadding=0 border=0>
+            <tr><td>E-mail:</td><td>&nbsp;&nbsp;&nbsp;</td><td><a href="mailto:arne@bioinfo.se">arne@bioinfo.se</a></td></tr>
+            <tr><td>Phone:</td><td>&nbsp;&nbsp;&nbsp;</td><td>(+46)-8-16&nbsp;4672</td></tr>
+            <tr><td>Fax:</td><td>&nbsp;&nbsp;&nbsp;</td><td>(+46)-8-15 3679</td></tr>
+          </table>
+          <br><br><br>
+    </td></tr>
+  </table>
+
+  </table>
+
+{% endblock %}
+
