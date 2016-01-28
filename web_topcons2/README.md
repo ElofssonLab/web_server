@@ -25,16 +25,18 @@ peptides. Nucleic Acids Res. 43, W401-W407
 
 1. init the folder
 
-`$ bash init.sh`
+    `$ bash init.sh`
 
-2. bash setup_virtualenv.sh
+2. Set up virtual environments
+
+    `bash setup_virtualenv.sh`
 
 3. copy the suq file to /usr/bin/
 
-`$ sudo cp misc/suq /usr/bin`
+    `$ sudo cp misc/suq /usr/bin`
 
 
-Note: please relink the settings.py to pro_settings.py before you make the
+**Note:** please relink the settings.py to pro_settings.py before you make the
 web-sever in public
 
 ## How to clone only this sub directory
