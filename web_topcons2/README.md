@@ -20,3 +20,29 @@ Tsirigos, K.D., Peters, C., Shu, N., Kall, L., Elofsson, A., 2015. The TOPCONS
 web server for consensus prediction of membrane protein topology and signal
 peptides. Nucleic Acids Res. 43, W401-W407
 
+
+## Installation
+
+1. init the folder
+`$ bash init.sh`
+
+2. bash setup_virtualenv.sh
+
+3. copy the suq file to /usr/bin/
+`$ sudo cp misc/suq /usr/bin`
+
+
+Note: please relink the settings.py to pro_settings.py before you make the
+web-sever in public
+
+## How to clone only this sub directory
+
+`
+#!/bin/bash
+git init web_server
+cd web_server
+git remote add -f origin https://github.com/ElofssonLab/web_server
+git config core.sparseCheckout true
+echo "web_topcons2" >> .git/info/sparse-checkout
+git pull origin master
+`
