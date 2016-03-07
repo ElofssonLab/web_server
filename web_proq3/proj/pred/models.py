@@ -37,7 +37,8 @@ class SubmissionForm(forms.Form):
     targetlength = forms.IntegerField(label='Length of target (optional)', min_value=1, required=False)
     jobname = forms.CharField(label='Job name (optional)', max_length=100, required=False)
     email = forms.EmailField(label='Email (recommended)', max_length=100, required=False)
-    keepfile = forms.BooleanField(label='Keep repacked models and SVM output', required=False)
+    repacking = forms.BooleanField(label='Perform side chain repacking', initial=True, required=False)
+    #keepfile = forms.BooleanField(label='Keep repacked models and SVM output', required=False)
     forcerun = forms.BooleanField(label='Force run (do not use cached profiles)', required=False)
 
 

@@ -172,13 +172,19 @@ def submit_seq(request):#{{{
             rawseq = request.POST['rawseq'] + "\n" # force add a new line
             rawmodel = request.POST['rawmodel'].replace('\r','') + "\n" # force add a new line
             isForceRun = False
-            isKeepFiles = False
+            isKeepFiles = True
+            isRepack = True
 
             if 'forcerun' in request.POST:
                 isForceRun = True
 
-            if 'keepfile' in request.POST:
-                isKeepFiles = True
+#             if 'keepfile' in request.POST:
+#                 isKeepFiles = True
+
+            if 'repacking' in request.POST:
+                isRepack = True
+            else:
+                isRepack = False
 
             try:
                 seqfile = request.FILES['seqfile']
@@ -204,6 +210,7 @@ def submit_seq(request):#{{{
             query['isForceRun'] = isForceRun
             query['username'] = username
             query['isKeepFiles'] = isKeepFiles
+            query['isRepack'] = isRepack
 
             is_valid = ValidateQuery(request, query)
 
@@ -828,8 +835,17 @@ def SubmitQueryToLocalQueue(query, tmpdir, rstdir):#{{{
         cmd += ["-host", query['client_ip']]
     if query['isForceRun']:
         cmd += ["-force"]
+
     if query['isKeepFiles']:
         cmd += ["-k", "yes"]
+    else:
+        cmd += ["-k", "no"]
+
+    if query['isRepack']:
+        cmd += ["-r", "yes"]
+    else:
+        cmd += ["-r", "no"]
+
     if query['targetlength'] != None:
         cmd += ['-t', str(query['targetlength'])]
     cmdline = " ".join(cmd)
